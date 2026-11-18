@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ecuaciones de 1er Grado</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    body { font-family: 'Inter', sans-serif; background-color: #0f111a; color: #e2e8f0; line-height: 1.6; margin: 0; padding: 20px; }
+    .blog-container { max-width: 850px; margin: 0 auto; background-color: #1e2139; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); }
+    header { border-bottom: 2px solid #2d3748; padding-bottom: 20px; margin-bottom: 30px; }
+    h1 { color: #63b3ed; margin: 10px 0; font-size: 2.4em; }
+    h2 { color: #68d391; border-bottom: 1px solid #2d3748; padding-bottom: 10px; margin-top: 20px; }
+    .back-link { color: #a0aec0; text-decoration: none; font-size: 0.9em; transition: color 0.3s ease; }
+    .back-link:hover { color: #63b3ed; }
+    .post-meta { font-size: 0.95em; color: #718096; font-weight: 600; background-color: #1a202c; padding: 10px 15px; border-radius: 6px; display: inline-block; margin-top: 10px; }
+    .intro { font-size: 1.1em; margin-bottom: 40px; color: #cbd5e0; }
+    .product-section { background-color: #252a41; padding: 30px; border-radius: 10px; margin-bottom: 35px; border-left: 5px solid #63b3ed; }
+    .rule { background-color: #1a202c; padding: 18px; border-radius: 6px; margin-bottom: 20px; font-style: italic; border-left: 3px solid #f6ad55; color: #e2e8f0; }
+    .example { margin-bottom: 25px; }
+    ol { background-color: #1a202c; padding: 20px 20px 20px 45px; border-radius: 6px; margin-top: 15px; }
+    li { margin-bottom: 10px; }
+    code { background-color: #000; padding: 4px 8px; border-radius: 4px; color: #fbd38d; font-family: 'Courier New', Courier, monospace; font-size: 1.1em; font-weight: 600; }
+    .toggle-btn { background-color: #4a5568; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; font-family: 'Inter', sans-serif; transition: all 0.3s ease; }
+    .toggle-btn:hover { background-color: #2b6cb0; }
+    .table-container { margin-top: 20px; background-color: #1a202c; padding: 25px; border-radius: 8px; border: 1px solid #4a5568; }
+    .hidden { display: none; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; text-align: center; }
+    th, td { border: 1px solid #4a5568; padding: 15px; font-size: 1.1em; }
+    th { background-color: #2d3748; color: #63b3ed; }
+    td { background-color: #252a41; }
+    .sum { text-align: center; font-weight: 600; color: #9ae6b4; background-color: #111; padding: 15px; border-radius: 6px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+  <div class="blog-container">
+    <header>
+      <div class="post-meta">
+        <span>Autor: Carlos Ek</span> | <span>Ecuaciones de 1er Grado</span>
+        <div style="margin-top: 15px;">
+          <!-- Botón clave: "../" te saca de la carpeta entradas y te lleva al index -->
+          <a href="../index.html" class="back-link" style="background-color: #2b6cb0; color: white; padding: 8px 12px; border-radius: 6px;">← Volver al Menú Principal</a>
+        </div>
+      </div> 
+    </header>
+
+    <article>
+
+      <p class="intro">En esta entrada documentaremos el procedimiento general para resolver cualquier ecuación de primer grado, presentaremos ejemplos prácticos de diferentes tipos y finalizaremos con el planteamiento de un problema de la vida real (enfocado al software).</p>
+
+      <!-- Procedimiento General -->
+      <section class="product-section">
+        <h2>Procedimiento General</h2>
+        <div class="rule">
+          <strong>Pasos para resolver cualquier ecuación de primer grado:</strong>
+          <ol>
+            <li><strong>Eliminar signos de agrupación:</strong> Resolver las multiplicaciones para suprimir paréntesis o corchetes.</li>
+            <li><strong>Eliminar denominadores:</strong> Si es fraccionaria, multiplicar todos los términos por el Mínimo Común Múltiplo (MCM).</li>
+            <li><strong>Transposición de términos:</strong> Agrupar en un lado del signo igual todos los términos con la incógnita (x) y en el otro lado los términos independientes (cambiando su signo al cruzar).</li>
+            <li><strong>Reducción:</strong> Sumar o restar los términos semejantes en ambos lados para llegar a la forma <code>ax = b</code>.</li>
+            <li><strong>Despeje:</strong> Dividir ambos lados entre el coeficiente que acompaña a la incógnita.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Ejemplos Resueltos -->
+      <section class="product-section">
+        <h2>Ejemplos Resueltos por Tipo</h2>
+
+        <!-- 1. Enteras -->
+        <h3 style="color: #63b3ed;">1. Ecuaciones Enteras</h3>
+        <div class="example">
+          <strong>Ejemplo:</strong> <code>5x - 8 = 2x + 7</code>
+          <ol>
+            <li>Agrupamos las incógnitas a la izquierda: <code>5x - 2x = 7 + 8</code></li>
+            <li>Reducimos términos: <code>3x = 15</code></li>
+            <li>Despejamos: <code>x = 15 / 3</code> ➔ <strong>x = 5</strong></li>
+          </ol>
+        </div>
+        <button class="toggle-btn" onclick="toggleTable('comp_eq1', this)">Ver comprobación</button>
+        <div id="comp_eq1" class="table-container hidden">
+          <p>Sustituimos <code>x = 5</code> en la ecuación original:</p>
+          <p><code>5(5) - 8 = 2(5) + 7</code></p>
+          <p><code>25 - 8 = 10 + 7</code></p>
+          <p class="sum"><code>17 = 17</code> (Cumple la igualdad)</p>
+        </div>
+
+        <hr style="border: 1px dashed #4a5568; margin: 30px 0;">
+
+        <!-- 2. Fraccionarias -->
+        <h3 style="color: #63b3ed;">2. Ecuaciones Fraccionarias</h3>
+        <div class="example">
+          <strong>Ejemplo:</strong> <code>x/2 + x/3 = 10</code>
+          <ol>
+            <li>Multiplicamos todo por el MCM (6): <code>6(x/2) + 6(x/3) = 6(10)</code></li>
+            <li>Simplificamos: <code>3x + 2x = 60</code></li>
+            <li>Reducimos: <code>5x = 60</code></li>
+            <li>Despejamos: <code>x = 60 / 5</code> ➔ <strong>x = 12</strong></li>
+          </ol>
+        </div>
+        <button class="toggle-btn" onclick="toggleTable('comp_eq2', this)">Ver comprobación</button>
+        <div id="comp_eq2" class="table-container hidden">
+          <p>Sustituimos <code>x = 12</code> en la original:</p>
+          <p><code>12/2 + 12/3 = 10</code></p>
+          <p><code>6 + 4 = 10</code></p>
+          <p class="sum"><code>10 = 10</code> (Cumple la igualdad)</p>
+        </div>
+
+        <hr style="border: 1px dashed #4a5568; margin: 30px 0;">
+
+        <!-- 3. Con Signos de Agrupación -->
+        <h3 style="color: #63b3ed;">3. Con Signos de Agrupación</h3>
+        <div class="example">
+          <strong>Ejemplo:</strong> <code>4(x - 2) - 2(x + 1) = 8</code>
+          <ol>
+            <li>Multiplicamos para quitar paréntesis: <code>4x - 8 - 2x - 2 = 8</code></li>
+            <li>Reducimos el lado izquierdo: <code>2x - 10 = 8</code></li>
+            <li>Transponemos el -10: <code>2x = 8 + 10</code> ➔ <code>2x = 18</code></li>
+            <li>Despejamos: <code>x = 18 / 2</code> ➔ <strong>x = 9</strong></li>
+          </ol>
+        </div>
+        <button class="toggle-btn" onclick="toggleTable('comp_eq3', this)">Ver comprobación</button>
+        <div id="comp_eq3" class="table-container hidden">
+          <p>Sustituimos <code>x = 9</code> en la original:</p>
+          <p><code>4(9 - 2) - 2(9 + 1) = 8</code></p>
+          <p><code>4(7) - 2(10) = 8</code></p>
+          <p><code>28 - 20 = 8</code></p>
+          <p class="sum"><code>8 = 8</code> (Cumple la igualdad)</p>
+        </div>
+
+        <hr style="border: 1px dashed #4a5568; margin: 30px 0;">
+
+        <!-- 4. Con Literales -->
+        <h3 style="color: #63b3ed;">4. Ecuaciones con Literales</h3>
+        <div class="example">
+          <strong>Ejemplo:</strong> <code>ax + b = cx + d</code>
+          <ol>
+            <li>Transponemos términos con x a la izquierda: <code>ax - cx = d - b</code></li>
+            <li>Factorizamos x (factor común): <code>x(a - c) = d - b</code></li>
+            <li>Despejamos x: <strong>x = (d - b) / (a - c)</strong></li>
+          </ol>
+        </div>
+        <button class="toggle-btn" onclick="toggleTable('comp_eq4', this)">Ver comprobación</button>
+        <div id="comp_eq4" class="table-container hidden">
+          <p>Sustituimos <code>x</code> en la ecuación original:</p>
+          <p><code>a[(d - b) / (a - c)] + b = c[(d - b) / (a - c)] + d</code></p>
+          <p>Al desarrollar y buscar común denominador en ambos lados, se llega a:</p>
+          <p class="sum"><code>(ad - bc) / (a - c) = (ad - bc) / (a - c)</code> (Identidad comprobada)</p>
+        </div>
+      </section>
+
+      <!-- Problema de Planteamiento (Inventado) -->
+      <section class="product-section" style="border-left: 5px solid #f6ad55;">
+        <h2>Problema de Planteamiento (Software)</h2>
+        <div class="rule">
+          <strong>Enunciado:</strong> Un desarrollador web freelance cobra una tarifa fija de instalación de $500 pesos, más $200 pesos por cada hora de programación invertida. Si al entregar una página web cobró un total de $3,500 pesos, ¿cuántas horas programó?
+        </div>
+        <div class="example">
+          <strong>Solución con los 5 pasos:</strong>
+          <ol>
+            <li><strong>Incógnita:</strong> <code>x</code> = Cantidad de horas programadas.</li>
+            <li><strong>Traducción:</strong> Instalación = 500, Costo por hora = 200x, Total = 3500.</li>
+            <li><strong>Ecuación:</strong> <code>200x + 500 = 3500</code></li>
+            <li><strong>Solución:</strong> 
+              <br><code>200x = 3500 - 500</code>
+              <br><code>200x = 3000</code>
+              <br><code>x = 3000 / 200</code> ➔ <strong>x = 15</strong>
+            </li>
+            <li><strong>Validación contra el enunciado:</strong> Si el desarrollador trabajó 15 horas, cobró 15 * $200 = $3,000 pesos por programación. Si le sumamos los $500 pesos de la tarifa de instalación, obtenemos los $3,500 pesos finales, lo cual valida el escenario del problema.</li>
+          </ol>
+        </div>
+      </section>
+
+    </article>
+  </div>
+
+  <script>
+    function toggleTable(tableId, btnElement) {
+      const tableContainer = document.getElementById(tableId);
+      
+      if (tableContainer.classList.contains('hidden')) {
+        tableContainer.classList.remove('hidden');
+        btnElement.textContent = "Ocultar comprobación";
+        btnElement.style.backgroundColor = "#2b6cb0"; 
+      } else {
+        tableContainer.classList.add('hidden');
+        btnElement.textContent = "Ver comprobación";
+        btnElement.style.backgroundColor = "#4a5568"; 
+      }
+    }
+  </script>
+</body>
+</html>

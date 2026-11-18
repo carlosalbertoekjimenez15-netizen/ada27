@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Factorización II</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    body { font-family: 'Inter', sans-serif; background-color: #0f111a; color: #e2e8f0; line-height: 1.6; margin: 0; padding: 20px; }
+    .blog-container { max-width: 850px; margin: 0 auto; background-color: #1e2139; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); }
+    header { border-bottom: 2px solid #2d3748; padding-bottom: 20px; margin-bottom: 30px; }
+    h1 { color: #63b3ed; margin: 10px 0; font-size: 2.4em; }
+    h2 { color: #68d391; border-bottom: 1px solid #2d3748; padding-bottom: 10px; margin-top: 20px; }
+    .back-link { color: #a0aec0; text-decoration: none; font-size: 0.9em; transition: color 0.3s ease; }
+    .back-link:hover { color: #63b3ed; }
+    .post-meta { font-size: 0.95em; color: #718096; font-weight: 600; background-color: #1a202c; padding: 10px 15px; border-radius: 6px; display: inline-block; margin-top: 10px; }
+    .intro { font-size: 1.1em; margin-bottom: 40px; color: #cbd5e0; }
+    .product-section { background-color: #252a41; padding: 30px; border-radius: 10px; margin-bottom: 35px; border-left: 5px solid #63b3ed; }
+    .rule { background-color: #1a202c; padding: 18px; border-radius: 6px; margin-bottom: 20px; font-style: italic; border-left: 3px solid #f6ad55; color: #e2e8f0; }
+    .example { margin-bottom: 25px; }
+    ol { background-color: #1a202c; padding: 20px 20px 20px 45px; border-radius: 6px; margin-top: 15px; }
+    li { margin-bottom: 10px; }
+    code { background-color: #000; padding: 4px 8px; border-radius: 4px; color: #fbd38d; font-family: 'Courier New', Courier, monospace; font-size: 1.1em; font-weight: 600; }
+    .toggle-btn { background-color: #4a5568; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; font-family: 'Inter', sans-serif; transition: all 0.3s ease; }
+    .toggle-btn:hover { background-color: #2b6cb0; }
+    .table-container { margin-top: 20px; background-color: #1a202c; padding: 25px; border-radius: 8px; border: 1px solid #4a5568; }
+    .hidden { display: none; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; text-align: center; }
+    th, td { border: 1px solid #4a5568; padding: 15px; font-size: 1.1em; }
+    th { background-color: #2d3748; color: #63b3ed; }
+    td { background-color: #252a41; }
+    .sum { text-align: center; font-weight: 600; color: #9ae6b4; background-color: #111; padding: 15px; border-radius: 6px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+  <div class="blog-container">
+    <header>
+      <div class="post-meta">
+        <span>Autor: Carlos Ek</span> | <span>Factorización II</span>
+        <div style="margin-top: 15px;">
+          <!-- Botón clave: "../" te saca de la carpeta entradas y te lleva al index -->
+          <a href="../index.html" class="back-link" style="background-color: #2b6cb0; color: white; padding: 8px 12px; border-radius: 6px;">← Volver al Menú Principal</a>
+        </div>
+      </div> 
+    </header>
+
+    <article>
+
+      <p class="intro">En esta entrada completaremos la documentación de los casos de factorización e incluiremos una estrategia paso a paso para identificar qué método aplicar ante cualquier polinomio.</p>
+
+      <!-- 1. Suma y diferencia de cubos -->
+      <section class="product-section">
+        <h2>1. Suma y Diferencia de Cubos</h2>
+        <div class="rule">
+          <strong>Cómo reconocerlo:</strong> Es un binomio (dos términos) separados por un signo de suma o resta, donde ambos términos tienen raíz cúbica exacta.
+          <br><br>
+          <strong>Procedimiento:</strong> Primero extraemos la raíz cúbica de ambos términos. Formamos un binomio corto con estas raíces y el mismo signo original. Luego, lo multiplicamos por un trinomio formado por: el cuadrado de la primera raíz, el signo contrario seguido del producto de ambas raíces, y finalmente el cuadrado de la segunda raíz siempre sumando.
+        </div>
+        <div class="example">
+          <strong>Ejemplo resuelto:</strong> <code>8x<sup>3</sup> + 27</code>
+          <ol>
+            <li>Raíz cúbica del primero: <code>∛(8x<sup>3</sup>) = 2x</code></li>
+            <li>Raíz cúbica del segundo: <code>∛(27) = 3</code></li>
+            <li>Binomio corto: <code>(2x + 3)</code></li>
+            <li>Trinomio largo: <code>(2x)<sup>2</sup> - (2x)(3) + (3)<sup>2</sup> = 4x<sup>2</sup> - 6x + 9</code></li>
+          </ol>
+          <p><strong>Resultado final:</strong> <code>(2x + 3)(4x<sup>2</sup> - 6x + 9)</code></p>
+        </div>
+        
+        <button class="toggle-btn" onclick="toggleTable('comp_cubos', this)">Ver comprobación</button>
+        <div id="comp_cubos" class="table-container hidden">
+          <p>Multiplicamos los polinomios usando la propiedad distributiva:</p>
+          <p><code>(2x)(4x<sup>2</sup> - 6x + 9) + (3)(4x<sup>2</sup> - 6x + 9)</code></p>
+          <p><code>= 8x<sup>3</sup> - 12x<sup>2</sup> + 18x + 12x<sup>2</sup> - 18x + 27</code></p>
+          <p class="sum"><code>= 8x<sup>3</sup> + 27</code> (Los términos intermedios se cancelan)</p>
+        </div>
+      </section>
+
+      <!-- 2. Trinomios x2 + bx + c -->
+      <section class="product-section">
+        <h2>2. Trinomios de la forma x² + bx + c</h2>
+        <div class="rule">
+          <strong>Cómo reconocerlo:</strong> Es un trinomio cuyo primer término es una variable elevada al cuadrado con coeficiente 1, un término lineal y un término independiente.
+          <br><br>
+          <strong>Procedimiento:</strong> Se abren dos factores binomios cuyo primer término es la raíz de <code>x²</code>. Luego se buscan dos números que multiplicados den el término independiente (c) y que sumados o restados den el coeficiente del término lineal (b).
+        </div>
+        <div class="example">
+          <strong>Ejemplo resuelto:</strong> <code>y<sup>2</sup> - 9y + 14</code>
+          <ol>
+            <li>Raíz del primer término: <code>y</code>. Paréntesis: <code>(y &nbsp;&nbsp;&nbsp;)(y &nbsp;&nbsp;&nbsp;)</code></li>
+            <li>Buscamos dos números que multiplicados den +14 y sumados den -9.</li>
+            <li>Los números son -7 y -2.</li>
+          </ol>
+          <p><strong>Resultado final:</strong> <code>(y - 7)(y - 2)</code></p>
+        </div>
+        
+        <button class="toggle-btn" onclick="toggleTable('comp_x2', this)">Ver comprobación</button>
+        <div id="comp_x2" class="table-container hidden">
+          <p>Multiplicamos de regreso:</p>
+          <p><code>(y - 7)(y - 2) = y<sup>2</sup> - 2y - 7y + 14</code></p>
+          <p class="sum"><code>= y<sup>2</sup> - 9y + 14</code></p>
+        </div>
+      </section>
+
+      <!-- 3. Trinomios ax2 + bx + c (Aspa Simple) -->
+      <section class="product-section">
+        <h2>3. Trinomios de la forma ax² + bx + c (Aspa Simple)</h2>
+        <div class="rule">
+          <strong>Cómo reconocerlo:</strong> Es un trinomio donde el coeficiente del término al cuadrado es diferente de 1.
+          <br><br>
+          <strong>Procedimiento (Aspa simple):</strong> Descomponemos el primer término en dos factores y el tercer término en otros dos factores. Multiplicamos de forma cruzada (en "aspa") y sumamos los resultados; esta suma debe ser igual al término central. Si coincide, agrupamos los factores en forma horizontal para el resultado final.
+        </div>
+        <div class="example">
+          <strong>Ejemplo resuelto:</strong> <code>3x<sup>2</sup> + 14x + 8</code>
+          <ol>
+            <li>Descomponemos <code>3x<sup>2</sup></code> en <code>3x</code> y <code>x</code>.</li>
+            <li>Descomponemos <code>8</code> en <code>2</code> y <code>4</code>.</li>
+            <li>Multiplicamos cruzado: <code>(3x)(4) = 12x</code> y <code>(x)(2) = 2x</code>.</li>
+            <li>Sumamos: <code>12x + 2x = 14x</code> (Coincide con el término central).</li>
+            <li>Tomamos los factores horizontalmente: <code>(3x + 2)</code> y <code>(x + 4)</code>.</li>
+          </ol>
+          <p><strong>Resultado final:</strong> <code>(3x + 2)(x + 4)</code></p>
+        </div>
+        
+        <button class="toggle-btn" onclick="toggleTable('comp_ax2', this)">Ver comprobación</button>
+        <div id="comp_ax2" class="table-container hidden">
+          <p>Multiplicamos de regreso:</p>
+          <p><code>(3x + 2)(x + 4) = 3x(x) + 3x(4) + 2(x) + 2(4)</code></p>
+          <p><code>= 3x<sup>2</sup> + 12x + 2x + 8</code></p>
+          <p class="sum"><code>= 3x<sup>2</sup> + 14x + 8</code></p>
+        </div>
+      </section>
+
+      <!-- 4. Estrategia de Factorización -->
+      <section class="product-section" style="border-left: 5px solid #68d391;">
+        <h2>Estrategia de factorización</h2>
+        <p>Para decidir qué método aplicar ante cualquier polinomio, sigue estos pasos analizando el número de términos:</p>
+        <ul style="background-color: #1a202c; padding: 25px 25px 25px 45px; border-radius: 6px; font-size: 1.1em; line-height: 1.8;">
+          <li>
+            <strong>Paso 0 (Siempre aplica):</strong> Revisa si existe un <em>Factor Común</em> numérico o literal en todos los términos y extráelo primero.
+          </li>
+          <li>
+            <strong>Si son 2 términos (Binomio):</strong>
+            <ul>
+              <li>Si se están restando y tienen raíz cuadrada: <em>Diferencia de Cuadrados</em>.</li>
+              <li>Si se suman o restan y tienen raíz cúbica: <em>Suma o Diferencia de Cubos</em>.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Si son 3 términos (Trinomio):</strong>
+            <ul>
+              <li>Revisa si el 1° y 3° término tienen raíz cuadrada y el centro es el doble producto: <em>Trinomio Cuadrado Perfecto (TCP)</em>.</li>
+              <li>Si empieza con x² (coeficiente 1): <em>Trinomio de la forma x² + bx + c</em>.</li>
+              <li>Si empieza con un número distinto de 1: <em>Trinomio de la forma ax² + bx + c (Aspa Simple)</em>.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Si son 4 o más términos:</strong> Agrupa los términos de dos en dos o tres en tres e intenta hacer <em>Factorización por Agrupación</em>.
+          </li>
+        </ul>
+      </section>
+
+    </article>
+  </div>
+
+  <script>
+    function toggleTable(tableId, btnElement) {
+      const tableContainer = document.getElementById(tableId);
+      
+      if (tableContainer.classList.contains('hidden')) {
+        tableContainer.classList.remove('hidden');
+        btnElement.textContent = "Ocultar comprobación";
+        btnElement.style.backgroundColor = "#2b6cb0"; 
+      } else {
+        tableContainer.classList.add('hidden');
+        btnElement.textContent = "Ver comprobación";
+        btnElement.style.backgroundColor = "#4a5568"; 
+      }
+    }
+  </script>
+</body>
+</html>

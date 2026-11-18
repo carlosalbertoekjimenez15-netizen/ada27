@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos Notables</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    body { font-family: 'Inter', sans-serif; background-color: #0f111a; color: #e2e8f0; line-height: 1.6; margin: 0; padding: 20px; }
+    .blog-container { max-width: 850px; margin: 0 auto; background-color: #1e2139; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); }
+    header { border-bottom: 2px solid #2d3748; padding-bottom: 20px; margin-bottom: 30px; }
+    h1 { color: #63b3ed; margin: 10px 0; font-size: 2.4em; }
+    h2 { color: #68d391; border-bottom: 1px solid #2d3748; padding-bottom: 10px; margin-top: 20px; }
+    .back-link { color: #a0aec0; text-decoration: none; font-size: 0.9em; transition: color 0.3s ease; }
+    .back-link:hover { color: #63b3ed; }
+    .post-meta { font-size: 0.95em; color: #718096; font-weight: 600; background-color: #1a202c; padding: 10px 15px; border-radius: 6px; display: inline-block; margin-top: 10px; }
+    .intro { font-size: 1.1em; margin-bottom: 40px; color: #cbd5e0; }
+    .product-section { background-color: #252a41; padding: 30px; border-radius: 10px; margin-bottom: 35px; border-left: 5px solid #63b3ed; }
+    .rule { background-color: #1a202c; padding: 18px; border-radius: 6px; margin-bottom: 20px; font-style: italic; border-left: 3px solid #f6ad55; color: #e2e8f0; }
+    .example { margin-bottom: 25px; }
+    ol { background-color: #1a202c; padding: 20px 20px 20px 45px; border-radius: 6px; margin-top: 15px; }
+    li { margin-bottom: 10px; }
+    code { background-color: #000; padding: 4px 8px; border-radius: 4px; color: #fbd38d; font-family: 'Courier New', Courier, monospace; font-size: 1.1em; font-weight: 600; }
+    .toggle-btn { background-color: #4a5568; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; font-family: 'Inter', sans-serif; transition: all 0.3s ease; }
+    .toggle-btn:hover { background-color: #2b6cb0; }
+    .table-container { margin-top: 20px; background-color: #1a202c; padding: 25px; border-radius: 8px; border: 1px solid #4a5568; }
+    .hidden { display: none; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; text-align: center; }
+    th, td { border: 1px solid #4a5568; padding: 15px; font-size: 1.1em; }
+    th { background-color: #2d3748; color: #63b3ed; }
+    td { background-color: #252a41; }
+    .sum { text-align: center; font-weight: 600; color: #9ae6b4; background-color: #111; padding: 15px; border-radius: 6px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+  <div class="blog-container">
+    <header>
+      <div class="post-meta">
+        <span>Autor: Carlos Ek</span> | <span>Productos Notables</span>
+        <div style="margin-top: 15px;">
+          <!-- Botón clave: "../" te saca de la carpeta entradas y te lleva al index -->
+          <a href="../index.html" class="back-link" style="background-color: #2b6cb0; color: white; padding: 8px 12px; border-radius: 6px;">← Volver al Menú Principal</a>
+        </div>
+      </div> 
+    </header>
+
+    <article>
+
+      <p class="intro">En esta entrada explicaremos los cuatro productos notables principales. Estas reglas matemáticas nos permiten encontrar el resultado de ciertas multiplicaciones algebraicas de forma directa, ahorrando tiempo.</p>
+
+      <!-- 1. Binomio al cuadrado -->
+      <section class="product-section">
+        <h2>1. Binomio al Cuadrado</h2>
+        <div class="rule">
+          <strong>Regla:</strong> El resultado es igual al cuadrado del primer término, más (o menos, dependiendo del signo) el doble del producto del primer término por el segundo, más el cuadrado del segundo término.
+        </div>
+        <div class="example">
+          <strong>Ejemplo paso a paso:</strong> <code>(3x + 4y)<sup>2</sup></code>
+          <ol>
+            <li>Cuadrado del primero: <code>(3x)<sup>2</sup> = 9x<sup>2</sup></code></li>
+            <li>Doble del primero por el segundo: <code>2(3x)(4y) = 24xy</code></li>
+            <li>Cuadrado del segundo: <code>(4y)<sup>2</sup> = 16y<sup>2</sup></code></li>
+          </ol>
+          <p><strong>Resultado final:</strong> <code>9x<sup>2</sup> + 24xy + 16y<sup>2</sup></code></p>
+        </div>
+        
+        <button class="toggle-btn" onclick="toggleTable('table1', this)">Ver comprobación (Método de tabla)</button>
+        <div id="table1" class="table-container hidden">
+          <table>
+            <tr>
+              <th>×</th>
+              <th>3x</th>
+              <th>+4y</th>
+            </tr>
+            <tr>
+              <th>3x</th>
+              <td>9x<sup>2</sup></td>
+              <td>+12xy</td>
+            </tr>
+            <tr>
+              <th>+4y</th>
+              <td>+12xy</td>
+              <td>+16y<sup>2</sup></td>
+            </tr>
+          </table>
+          <p class="sum">Suma: <code>9x<sup>2</sup> + 12xy + 12xy + 16y<sup>2</sup> = 9x<sup>2</sup> + 24xy + 16y<sup>2</sup></code></p>
+        </div>
+      </section>
+
+      <!-- 2. Binomio al cubo -->
+      <section class="product-section">
+        <h2>2. Binomio al Cubo</h2>
+        <div class="rule">
+          <strong>Regla:</strong> Es igual al cubo del primer término, más el triple producto del cuadrado del primero por el segundo, más el triple producto del primero por el cuadrado del segundo, más el cubo del segundo término.
+        </div>
+        <div class="example">
+          <strong>Ejemplo paso a paso:</strong> <code>(x + 4)<sup>3</sup></code>
+          <ol>
+            <li>Cubo del primero: <code>(x)<sup>3</sup> = x<sup>3</sup></code></li>
+            <li>Triple del 1º al cuadrado por el 2º: <code>3(x<sup>2</sup>)(4) = 12x<sup>2</sup></code></li>
+            <li>Triple del 1º por el 2º al cuadrado: <code>3(x)(4<sup>2</sup>) = 3(x)(16) = 48x</code></li>
+            <li>Cubo del segundo: <code>(4)<sup>3</sup> = 64</code></li>
+          </ol>
+          <p><strong>Resultado final:</strong> <code>x<sup>3</sup> + 12x<sup>2</sup> + 48x + 64</code></p>
+        </div>
+        
+        <button class="toggle-btn" onclick="toggleTable('table2', this)">Ver comprobación (Método de tabla)</button>
+        <div id="table2" class="table-container hidden">
+          <p><small>Para comprobar, multiplicamos <code>(x + 4)</code> por el resultado de <code>(x + 4)<sup>2</sup></code> que es <code>(x<sup>2</sup> + 8x + 16)</code></small></p>
+          <table>
+            <tr>
+              <th>×</th>
+              <th>x<sup>2</sup></th>
+              <th>+8x</th>
+              <th>+16</th>
+            </tr>
+            <tr>
+              <th>x</th>
+              <td>x<sup>3</sup></td>
+              <td>+8x<sup>2</sup></td>
+              <td>+16x</td>
+            </tr>
+            <tr>
+              <th>+4</th>
+              <td>+4x<sup>2</sup></td>
+              <td>+32x</td>
+              <td>+64</td>
+            </tr>
+          </table>
+          <p class="sum">Suma agrupando términos: <code>x<sup>3</sup> + (8x<sup>2</sup> + 4x<sup>2</sup>) + (16x + 32x) + 64 = x<sup>3</sup> + 12x<sup>2</sup> + 48x + 64</code></p>
+        </div>
+      </section>
+
+      <!-- 3. Binomios con término común -->
+      <section class="product-section">
+        <h2>3. Binomios con Término Común</h2>
+        <div class="rule">
+          <strong>Regla:</strong> El resultado es el cuadrado del término común, más la suma algebraica de los términos no comunes multiplicada por el término común, más el producto de los términos no comunes.
+        </div>
+        <div class="example">
+          <strong>Ejemplo paso a paso:</strong> <code>(x + 6)(x - 2)</code>
+          <ol>
+            <li>Cuadrado del común: <code>(x)<sup>2</sup> = x<sup>2</sup></code></li>
+            <li>Suma de no comunes por el común: <code>(+6 - 2)(x) = 4x</code></li>
+            <li>Producto de no comunes: <code>(+6)(-2) = -12</code></li>
+          </ol>
+          <p><strong>Resultado final:</strong> <code>x<sup>2</sup> + 4x - 12</code></p>
+        </div>
+        
+        <button class="toggle-btn" onclick="toggleTable('table3', this)">Ver comprobación (Método de tabla)</button>
+        <div id="table3" class="table-container hidden">
+          <table>
+            <tr>
+              <th>×</th>
+              <th>x</th>
+              <th>+6</th>
+            </tr>
+            <tr>
+              <th>x</th>
+              <td>x<sup>2</sup></td>
+              <td>+6x</td>
+            </tr>
+            <tr>
+              <th>-2</th>
+              <td>-2x</td>
+              <td>-12</td>
+            </tr>
+          </table>
+          <p class="sum">Suma: <code>x<sup>2</sup> + 6x - 2x - 12 = x<sup>2</sup> + 4x - 12</code></p>
+        </div>
+      </section>
+
+      <!-- 4. Binomios conjugados -->
+      <section class="product-section">
+        <h2>4. Binomios Conjugados</h2>
+        <div class="rule">
+          <strong>Regla:</strong> El producto de dos binomios conjugados es igual a una diferencia de cuadrados. Es decir, el cuadrado del primer término menos el cuadrado del segundo término.
+        </div>
+        <div class="example">
+          <strong>Ejemplo paso a paso:</strong> <code>(5x + 7y)(5x - 7y)</code>
+          <ol>
+            <li>Cuadrado del primer término: <code>(5x)<sup>2</sup> = 25x<sup>2</sup></code></li>
+            <li>Menos el cuadrado del segundo término: <code>-(7y)<sup>2</sup> = -49y<sup>2</sup></code></li>
+          </ol>
+          <p><strong>Resultado final:</strong> <code>25x<sup>2</sup> - 49y<sup>2</sup></code></p>
+        </div>
+        
+        <button class="toggle-btn" onclick="toggleTable('table4', this)">Ver comprobación (Método de tabla)</button>
+        <div id="table4" class="table-container hidden">
+          <table>
+            <tr>
+              <th>×</th>
+              <th>5x</th>
+              <th>+7y</th>
+            </tr>
+            <tr>
+              <th>5x</th>
+              <td>25x<sup>2</sup></td>
+              <td>+35xy</td>
+            </tr>
+            <tr>
+              <th>-7y</th>
+              <td>-35xy</td>
+              <td>-49y<sup>2</sup></td>
+            </tr>
+          </table>
+          <p class="sum">Suma: <code>25x<sup>2</sup> + 35xy - 35xy - 49y<sup>2</sup> = 25x<sup>2</sup> - 49y<sup>2</sup></code></p>
+        </div>
+      </section>
+
+    </article>
+  </div>
+
+  <script>
+    function toggleTable(tableId, btnElement) {
+      const tableContainer = document.getElementById(tableId);
+      
+      if (tableContainer.classList.contains('hidden')) {
+        tableContainer.classList.remove('hidden');
+        btnElement.textContent = "Ocultar comprobación";
+        btnElement.style.backgroundColor = "#2b6cb0"; 
+      } else {
+        tableContainer.classList.add('hidden');
+        btnElement.textContent = "Ver comprobación";
+        btnElement.style.backgroundColor = "#4a5568"; 
+      }
+    }
+  </script>
+</body>
+</html>

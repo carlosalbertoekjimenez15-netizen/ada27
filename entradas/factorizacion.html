@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Factorización I</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    body { font-family: 'Inter', sans-serif; background-color: #0f111a; color: #e2e8f0; line-height: 1.6; margin: 0; padding: 20px; }
+    .blog-container { max-width: 850px; margin: 0 auto; background-color: #1e2139; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); }
+    header { border-bottom: 2px solid #2d3748; padding-bottom: 20px; margin-bottom: 30px; }
+    h1 { color: #63b3ed; margin: 10px 0; font-size: 2.4em; }
+    h2 { color: #68d391; border-bottom: 1px solid #2d3748; padding-bottom: 10px; margin-top: 20px; }
+    .back-link { color: #a0aec0; text-decoration: none; font-size: 0.9em; transition: color 0.3s ease; }
+    .back-link:hover { color: #63b3ed; }
+    .post-meta { font-size: 0.95em; color: #718096; font-weight: 600; background-color: #1a202c; padding: 10px 15px; border-radius: 6px; display: inline-block; margin-top: 10px; }
+    .intro { font-size: 1.1em; margin-bottom: 40px; color: #cbd5e0; }
+    .product-section { background-color: #252a41; padding: 30px; border-radius: 10px; margin-bottom: 35px; border-left: 5px solid #63b3ed; }
+    .rule { background-color: #1a202c; padding: 18px; border-radius: 6px; margin-bottom: 20px; font-style: italic; border-left: 3px solid #f6ad55; color: #e2e8f0; }
+    .example { margin-bottom: 25px; }
+    ol { background-color: #1a202c; padding: 20px 20px 20px 45px; border-radius: 6px; margin-top: 15px; }
+    li { margin-bottom: 10px; }
+    code { background-color: #000; padding: 4px 8px; border-radius: 4px; color: #fbd38d; font-family: 'Courier New', Courier, monospace; font-size: 1.1em; font-weight: 600; }
+    .toggle-btn { background-color: #4a5568; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; font-family: 'Inter', sans-serif; transition: all 0.3s ease; }
+    .toggle-btn:hover { background-color: #2b6cb0; }
+    .table-container { margin-top: 20px; background-color: #1a202c; padding: 25px; border-radius: 8px; border: 1px solid #4a5568; }
+    .hidden { display: none; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; text-align: center; }
+    th, td { border: 1px solid #4a5568; padding: 15px; font-size: 1.1em; }
+    th { background-color: #2d3748; color: #63b3ed; }
+    td { background-color: #252a41; }
+    .sum { text-align: center; font-weight: 600; color: #9ae6b4; background-color: #111; padding: 15px; border-radius: 6px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+  <div class="blog-container">
+    <header>
+      <div class="post-meta">
+        <span>Autor: Carlos Ek</span> | <span>Factorización I</span>
+        <div style="margin-top: 15px;">
+          <!-- Botón clave: "../" te saca de la carpeta entradas y te lleva al index -->
+          <a href="../index.html" class="back-link" style="background-color: #2b6cb0; color: white; padding: 8px 12px; border-radius: 6px;">← Volver al Menú Principal</a>
+        </div>
+      </div> 
+    </header>
+
+    <article>
+
+      <p class="intro">En esta entrada documentaremos los primeros casos de factorización como el proceso inverso de los productos notables, para consolidar la relación entre multiplicar y factorizar.</p>
+
+      <!-- 1. Factorización con Término Común -->
+      <section class="product-section">
+        <h2>1. Factorización por Término Común (Trinomio de la forma x² + bx + c)</h2>
+        <div class="rule">
+          <strong>Cómo reconocerlo:</strong> Es un trinomio donde el primer término es una variable al cuadrado (con coeficiente 1), el segundo tiene la misma variable sin exponente, y el tercero es un número independiente.
+          <br><br>
+          <strong>Procedimiento:</strong> Abrimos dos paréntesis. En ambos colocamos la raíz cuadrada del primer término (el término común). Después, buscamos dos números que multiplicados nos den el tercer término, y que sumados o restados nos den el coeficiente del segundo término.
+        </div>
+        <div class="example">
+          <strong>Ejemplo resuelto:</strong> <code>x<sup>2</sup> + 8x + 15</code>
+          <ol>
+            <li>Raíz del primer término: <code>x</code>. Abrimos paréntesis: <code>(x &nbsp;&nbsp;&nbsp;)(x &nbsp;&nbsp;&nbsp;)</code></li>
+            <li>Buscamos números que multiplicados den 15 y sumados den 8.</li>
+            <li>Los números son 5 y 3 (porque 5×3 = 15 y 5+3 = 8).</li>
+          </ol>
+          <p><strong>Resultado final:</strong> <code>(x + 5)(x + 3)</code></p>
+        </div>
+        
+        <button class="toggle-btn" onclick="toggleTable('comp1', this)">Ver comprobación</button>
+        <div id="comp1" class="table-container hidden">
+          <p>Multiplicamos de regreso usando la propiedad distributiva:</p>
+          <p><code>(x + 5)(x + 3) = (x)(x) + (x)(3) + (5)(x) + (5)(3)</code></p>
+          <p><code>= x<sup>2</sup> + 3x + 5x + 15</code></p>
+          <p class="sum"><code>= x<sup>2</sup> + 8x + 15</code> (El resultado es el trinomio original)</p>
+        </div>
+      </section>
+
+      <!-- 2. Trinomio Cuadrado Perfecto -->
+      <section class="product-section">
+        <h2>2. Trinomio Cuadrado Perfecto (TCP)</h2>
+        <div class="rule">
+          <strong>Cómo reconocerlo:</strong> Debe tener tres términos. El primero y el último deben ser positivos y tener raíz cuadrada exacta. Además, el término de en medio debe ser exactamente el doble de multiplicar esas dos raíces.
+          <br><br>
+          <strong>Procedimiento:</strong> Le sacamos la raíz cuadrada al primer y al tercer término. Escribimos ambas raíces dentro de un paréntesis, separadas por el signo que tenga el segundo término, y finalmente elevamos todo ese paréntesis al cuadrado.
+        </div>
+        <div class="example">
+          <strong>Ejemplo resuelto:</strong> <code>4x<sup>2</sup> - 20x + 25</code>
+          <ol>
+            <li>Raíz del primer término: <code>√(4x<sup>2</sup>) = 2x</code></li>
+            <li>Raíz del tercer término: <code>√(25) = 5</code></li>
+            <li>Verificamos el de en medio: <code>2(2x)(5) = 20x</code> (¡Sí cumple!).</li>
+            <li>Tomamos el signo del medio (-) y elevamos al cuadrado.</li>
+          </ol>
+          <p><strong>Resultado final:</strong> <code>(2x - 5)<sup>2</sup></code></p>
+        </div>
+        
+        <button class="toggle-btn" onclick="toggleTable('comp2', this)">Ver comprobación</button>
+        <div id="comp2" class="table-container hidden">
+          <p>Multiplicamos el binomio por sí mismo:</p>
+          <p><code>(2x - 5)(2x - 5) = (2x)(2x) + (2x)(-5) + (-5)(2x) + (-5)(-5)</code></p>
+          <p><code>= 4x<sup>2</sup> - 10x - 10x + 25</code></p>
+          <p class="sum"><code>= 4x<sup>2</sup> - 20x + 25</code> (El resultado es el TCP original)</p>
+        </div>
+      </section>
+
+      <!-- 3. Diferencia de Cuadrados -->
+      <section class="product-section">
+        <h2>3. Diferencia de Cuadrados</h2>
+        <div class="rule">
+          <strong>Cómo reconocerlo:</strong> Solo son dos términos (es un binomio). Siempre hay un signo de resta entre ellos, y ambos términos tienen raíz cuadrada exacta.
+          <br><br>
+          <strong>Procedimiento:</strong> Obtenemos la raíz cuadrada de cada uno de los dos términos. Abrimos dos paréntesis; en uno ponemos la suma de estas raíces y en el otro ponemos la resta (formando binomios conjugados).
+        </div>
+        <div class="example">
+          <strong>Ejemplo resuelto:</strong> <code>16m<sup>2</sup> - 81</code>
+          <ol>
+            <li>Raíz del primer término: <code>√(16m<sup>2</sup>) = 4m</code></li>
+            <li>Raíz del segundo término: <code>√(81) = 9</code></li>
+            <li>Formamos un binomio sumando y otro restando.</li>
+          </ol>
+          <p><strong>Resultado final:</strong> <code>(4m + 9)(4m - 9)</code></p>
+        </div>
+        
+        <button class="toggle-btn" onclick="toggleTable('comp3', this)">Ver comprobación</button>
+        <div id="comp3" class="table-container hidden">
+          <p>Multiplicamos los binomios conjugados de regreso:</p>
+          <p><code>(4m + 9)(4m - 9) = (4m)(4m) + (4m)(-9) + (9)(4m) + (9)(-9)</code></p>
+          <p><code>= 16m<sup>2</sup> - 36m + 36m - 81</code></p>
+          <p class="sum"><code>= 16m<sup>2</sup> - 81</code> (Los términos del medio se cancelan)</p>
+        </div>
+      </section>
+
+      <!-- Sección: Ida y Regreso -->
+      <section class="product-section" style="border-left: 5px solid #f6ad55;">
+        <h2>Ida y regreso</h2>
+        <p>Relación entre los casos de factorización y los productos notables:</p>
+        <ul style="background-color: #1a202c; padding: 25px 25px 25px 45px; border-radius: 6px; font-size: 1.1em; line-height: 1.8;">
+          <li>
+            <strong>Ida:</strong> Al multiplicar <em>Binomios Conjugados</em> obtenemos una <strong>Diferencia de Cuadrados</strong>.<br>
+            <strong>Regreso:</strong> Al factorizar una <strong>Diferencia de Cuadrados</strong> volvemos a los <em>Binomios Conjugados</em>.
+          </li>
+          <li style="margin-top: 15px;">
+            <strong>Ida:</strong> Al desarrollar un <em>Binomio al Cuadrado</em> obtenemos un <strong>Trinomio Cuadrado Perfecto (TCP)</strong>.<br>
+            <strong>Regreso:</strong> Al factorizar un <strong>TCP</strong> volvemos al <em>Binomio al Cuadrado</em>.
+          </li>
+          <li style="margin-top: 15px;">
+            <strong>Ida:</strong> Al multiplicar <em>Binomios con Término Común</em> obtenemos un <strong>Trinomio de la forma x² + bx + c</strong>.<br>
+            <strong>Regreso:</strong> Al factorizar este <strong>Trinomio</strong> volvemos a los <em>Binomios con Término Común</em>.
+          </li>
+        </ul>
+      </section>
+
+    </article>
+  </div>
+
+  <script>
+    function toggleTable(tableId, btnElement) {
+      const tableContainer = document.getElementById(tableId);
+      
+      if (tableContainer.classList.contains('hidden')) {
+        tableContainer.classList.remove('hidden');
+        btnElement.textContent = "Ocultar comprobación";
+        btnElement.style.backgroundColor = "#2b6cb0"; 
+      } else {
+        tableContainer.classList.add('hidden');
+        btnElement.textContent = "Ver comprobación";
+        btnElement.style.backgroundColor = "#4a5568"; 
+      }
+    }
+  </script>
+</body>
+</html>
