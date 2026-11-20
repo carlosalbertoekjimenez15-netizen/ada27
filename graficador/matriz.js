@@ -80,10 +80,9 @@ function sumar(A, B) {
 /**
  * Resta A − B elemento con elemento.
  * Misma condición que la suma: mismo orden.
- * El if que lanza el error es igual que en sumar().
  */
 function restar(A, B) {
-if (!mismoOrden(A, B)) {
+  if (!mismoOrden(A, B)) {
     throw new Error('Para restar, A y B deben tener el mismo orden.');
   }
   const [m, n] = orden(A);
@@ -99,11 +98,6 @@ if (!mismoOrden(A, B)) {
 /**
  * Multiplicación escalar k · A: multiplica CADA elemento por k.
  * En una imagen: k > 1 aclara, 0 < k < 1 oscurece.
- * 
- la const m, n significan el número de filas y columnas de la matriz A
- la const R es la matriz resultante que se va a devolver, y se inicializa con ceros usando la función crearMatriz.
- Se recorren todos los elementos de la matriz A usando dos bucles for anidados, y se multiplica cada elemento por k, guardando el resultado en la matriz R.
- Finalmente, se devuelve la matriz R que contiene el resultado de la multiplicación escalar.
  */
 function escalar(k, A) {
   const [m, n] = orden(A);
@@ -121,11 +115,6 @@ function escalar(k, A) {
  * Si A es m × n, el resultado es n × m  →  R[j][i] = A[i][j]
  *
  * Ojo: el resultado NO tiene el mismo tamaño que A (salvo si es cuadrada).
- * 
- * la const m, n significan el número de filas y columnas de la matriz A
- la const R es la matriz resultante que se va a devolver, y se inicializa con ceros usando la función crearMatriz.
- Se recorren todos los elementos de la matriz A usando dos bucles for anidados, y se asigna el valor de A[i][j] a R[j][i], lo que efectivamente intercambia filas por columnas.
- Finalmente, se devuelve la matriz R que contiene la transpuesta de A.
  */
 function transpuesta(A) {
   const [m, n] = orden(A);
@@ -147,9 +136,13 @@ function transpuesta(A) {
 /** Determinante de una matriz 2 × 2:  ad − bc */
 function det2(T) {
   // TODO Workshop 2
-  const [filas, columnas] = orden(T);
+  //pendiente('det2', 'Workshop 2');
   var determinante = 0;
-  const a = T[0][0], b = T[0][1], c = T[1][0], d = T[1][1];
+  const a = T[0][0];
+  const b = T[0][1];
+  const c = T[1][0];
+  const d = T[1][1];
+  //
   determinante = a * d - b * c;
   return determinante;
 }
@@ -164,18 +157,18 @@ function transformar(x, y, T) {
 }
 
 /**
-* Determinante de una matriz cuadrada de cualquier tamaño, por COFACTORES.
-* Regresa un NÚMERO, no una matriz.
-*
-* Si A no es cuadrada:
-*     throw new Error('El determinante solo existe para matrices cuadradas.');
-*
-* Pista: es recursiva.
-*   - Si A es 2 × 2, regresa det2(A).
-*   - Si no, recorre el renglón 0: para cada columna j, arma el MENOR
-*     (A sin el renglón 0 y sin la columna j) y suma
-*         (−1)^j · A[0][j] · determinante(menor)
-*/
+ * Determinante de una matriz cuadrada de cualquier tamaño, por COFACTORES.
+ * Regresa un NÚMERO, no una matriz.
+ *
+ * Si A no es cuadrada:
+ *     throw new Error('El determinante solo existe para matrices cuadradas.');
+ *
+ * Pista: es recursiva.
+ *  - Si A es 2 × 2, regresa det2(A).
+ *  - Si no, recorre el renglón 0: para cada columna j, arma el MENOR
+ *    (A sin el renglón 0 y sin la columna j) y suma
+ *        (-1)^j · A[0][j] · determinante(menor)
+ */
 function determinante(A) {
   // TODO Workshop 2
   //pendiente('determinante', 'Workshop 2');
